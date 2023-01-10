@@ -21,7 +21,7 @@ declare module "aba-generator" {
             date?: Date | string | number; // Date to be processed.
             time?: Date | string | number; // Time to be processed. Should be ignored according to the specs.
             // for custom fields
-            [x: string]: string | number | Date;
+            [x: string]: string | number | Date | undefined;
         };
         schemas?: { [key in RecordTypeNumber]?: RecordSchema };
         footer?: {
@@ -32,7 +32,7 @@ declare module "aba-generator" {
             debitTotal?: string; // This is auto-generated field. But you can override it with anything.
             numberOfTransactions?: string; // This is an auto-generated field. But you can override it with anything.
             // for custom fields
-            [x: string]: string | number | Date;
+            [x: string]: string | number | Date | undefined;
         };
     }
 
@@ -50,7 +50,7 @@ declare module "aba-generator" {
         remitter?: string; // The transacting company name.
         taxAmount?: number;
         // for custom fields
-        [x: string]: any;
+        [x: string]: string | number | Date | undefined;
     }
 
     type RecordTypeNumber = "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9";
